@@ -1,0 +1,8 @@
+.git
+.gitignore
+.omp
+.playwright-cli
+.wrangler
+AGENTS.md
+README.md
+wrangler.jsonc

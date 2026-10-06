@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      try {
+        const t = localStorage.getItem("subclave-theme");
+        if (t === "light") document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
+    <title>Subclave: a password manager that keeps your vault on your computer</title>
+    <meta
+      name="description"
+      content="A local-first desktop password manager. The vault is one encrypted file on your computer, synced end to end through an S3 bucket or WebDAV share you own, with a browser extension for Chrome and Firefox. No account, no server, no telemetry. macOS, Linux and Windows."
+    />
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/icon.png" />
+    <link rel="preload" href="assets/fonts/atkinson-next-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/atkinson-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="styles.css" />
+    <meta property="og:title" content="Subclave" />
+    <meta
+      property="og:description"
+      content="A password manager that keeps your vault on your computer and syncs it through storage you own."
+    />
+    <meta property="og:image" content="https://subclave.rendy.dev/assets/icon.png" />
+    <meta property="og:url" content="https://subclave.rendy.dev/" />
+    <meta name="twitter:card" content="summary" />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="top wrap">
+      <a class="brand" href="/">
+        <img src="assets/logo.svg" width="28" height="28" alt="" />
+        Subclave
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="#vault">Features</a>
+        <a href="#download">Download</a>
+        <a href="https://github.com/rendyuwu/subclave">GitHub</a>
+        <button type="button" class="theme-toggle" aria-pressed="true" title="Dark theme" data-theme-toggle hidden>
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2" />
+            <path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" />
+          </svg>
+          <span class="sr">Dark theme</span>
+        </button>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <h1 id="hero-title">Your passwords live on your computer.</h1>
+          <p class="hero-lead">
+            Subclave is a desktop password manager with no account and no server of its own. The vault is one
+            encrypted file on this machine. Sync it through an S3 bucket or WebDAV share you own, and fill logins in
+            Chrome and Firefox with an extension that talks only to the app.
+          </p>
+          <div class="cta">
+            <a class="btn" href="https://github.com/rendyuwu/subclave/releases/latest" data-primary>Download</a>
+            <a class="cta-alt" href="#download">All platforms</a>
+          </div>
+          <p class="cta-file" data-primary-file>Free and open source, Apache-2.0.</p>
+        </div>
+
+        <svg class="route" viewBox="0 0 140 100" role="img" aria-labelledby="route-title">
+          <title id="route-title">
+            The Subclave S drawn as the path of one login: github.com on this laptop, an object with a hashed name and
+            ciphertext only in your bucket, and the same github.com login again on your desktop.
+          </title>
+          <defs>
+            <linearGradient id="route-tile" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#1d2b53" />
+              <stop offset="1" stop-color="#0d1530" />
+            </linearGradient>
+          </defs>
+          <rect class="tile" width="140" height="100" rx="18" />
+          <path class="s" pathLength="1" d="M51.97 27.19A17 17 0 1 0 36 50A17 17 0 1 1 20.03 72.81" />
+          <g class="labels" aria-hidden="true">
+            <g class="lb" style="--d: 0.15s">
+              <text class="place" x="66" y="20">This laptop</text>
+              <text class="site" x="66" y="26.5">github.com</text>
+              <text class="secret" x="66" y="32.5">rendy ••••••••••</text>
+            </g>
+            <g class="lb" style="--d: 0.8s">
+              <text class="place" x="66" y="44">Your bucket</text>
+              <text class="hash" x="66" y="50.5">obj/6cfe7cfe3c8f…</text>
+              <text class="secret" x="66" y="56.5">ciphertext only</text>
+            </g>
+            <g class="lb" style="--d: 1.45s">
+              <text class="place" x="66" y="67">Your desktop</text>
+              <text class="site" x="66" y="73.5">github.com</text>
+              <text class="secret" x="66" y="79.5">rendy ••••••••••</text>
+            </g>
+          </g>
+        </svg>
+      </section>
+
+      <div class="parts wrap">
+        <section class="part" id="vault" aria-labelledby="vault-h">
+          <div class="part-head">
+            <h2 id="vault-h">Vault</h2>
+            <p class="where">Kept in one encrypted file on this computer.</p>
+          </div>
+          <div class="part-body">
+            <p class="claim">Logins, one-time codes and notes, in one file only you can open.</p>
+            <figure class="shot shot-wide">
+              <a class="zoom" href="assets/shots/main.webp">
+                <span class="sr">Enlarge screenshot: </span><img
+                src="assets/shots/main.webp"
+                width="1020"
+                height="400"
+                loading="lazy"
+                alt="Subclave's main window, unlocked: the Groups pane, a GitHub entry in the list, and its detail with the username rendy, a hidden password, the github.com URL with its Domain match rule, and the entry's history."
+              />
+              </a>
+            </figure>
+            <ul class="facts facts-wide">
+              <li>
+                An entry holds a username, password, URLs, a TOTP secret, notes and custom fields, plus tags, a colour
+                and an expiry date. Groups nest, and deleted entries wait in Trash.
+              </li>
+              <li>
+                Changing a title, username, password, URL, note, TOTP secret or custom field keeps the version before
+                it. Each entry's history holds the last 10.
+              </li>
+              <li>
+                A revealed password hides again after 30 seconds, when you click away, or when you pick another entry.
+                A copied one leaves the clipboard after 30 seconds by default, unless you copied something else since.
+              </li>
+              <li>
+                The vault locks after 10 idle minutes by default, from the tray, or when you minimize the window if you
+                turn that on.
+              </li>
+              <li>
+                The generator makes passwords of 8 to 128 characters, 20 by default, with every character set you pick.
+                Any password gets a strength score from zxcvbn.
+              </li>
+            </ul>
+            <dl class="specs">
+              <dt>Vault file</dt>
+              <dd>Argon2id (64 MiB, 3 passes), then AES-256-GCM</dd>
+              <dt>Plaintext</dt>
+              <dd>In the Rust core, wiped on lock; the window sees a password only when you reveal it</dd>
+              <dt>Network</dt>
+              <dd>None, except sync and the update check</dd>
+            </dl>
+          </div>
+        </section>
+
+        <section class="part" id="browser" aria-labelledby="browser-h">
+          <div class="part-head">
+            <h2 id="browser-h">Browser</h2>
+            <p class="where">Passed over a local socket, never the network.</p>
+          </div>
+          <div class="part-body">
+            <p class="claim">Fill from the login field, the toolbar or a shortcut. Nothing fills on its own.</p>
+            <div class="cols with-shot">
+              <ul class="facts">
+                <li>
+                  An extension for Chrome, Chromium, Edge, Brave, Vivaldi and Firefox 115 or later. The icon in login
+                  fields and the save prompt need Chrome 114 or Firefox 125.
+                </li>
+                <li>Pair it with the app: both show the same 6-digit code, and you click Allow.</li>
+                <li>
+                  The icon in a login field offers logins saved for that exact host. Matches on other hosts of the
+                  same domain are in the toolbar popup and on <kbd>Ctrl+Shift+L</kbd> (<kbd>Cmd+Shift+L</kbd> on
+                  macOS).
+                </li>
+                <li>After you sign in through a login form with a new or changed password, it offers to save or update the login.</li>
+                <li>
+                  The page never tells Subclave where it is. The browser reports the URL, and the app checks the match
+                  again before it hands over a password.
+                </li>
+              </ul>
+              <figure class="shot">
+                <a class="zoom" href="assets/shots/browser.webp">
+                  <span class="sr">Enlarge screenshot: </span><img
+                  src="assets/shots/browser.webp"
+                  width="432"
+                  height="345"
+                  loading="lazy"
+                  alt="GitHub's sign-in form with a Subclave key icon at the right end of the username and password fields, both filled."
+                />
+                </a>
+                <figcaption>The Subclave icon in GitHub's sign-in fields.</figcaption>
+              </figure>
+            </div>
+            <figure class="hops">
+              <ol>
+                <li><b>Login page</b> gets the username and password, in its own fields only</li>
+                <li><b>Extension</b> asks for logins for the URL the browser reports for this tab</li>
+                <li><b>subclave-proxy</b> started by the browser, relays to the app over a local socket or pipe</li>
+                <li><b>Subclave</b> checks the match again and releases one login</li>
+              </ol>
+              <figcaption>
+                A fill starts with your click or shortcut and runs along this chain and back. No step opens a network
+                port.
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="part" id="sync" aria-labelledby="sync-h">
+          <div class="part-head">
+            <h2 id="sync-h">Sync</h2>
+            <p class="where">Leaves this computer as ciphertext.</p>
+          </div>
+          <div class="part-body">
+            <p class="claim">Sync through storage you already have. It holds your vault and cannot read it.</p>
+            <ul class="facts facts-wide">
+              <li>
+                S3 and S3-compatible storage, or WebDAV such as Nextcloud and ownCloud. Off until you set it up; another
+                computer joins with the same storage and sync passphrase.
+              </li>
+              <li>Pulls when you unlock and when the window gets focus. Pushes shortly after an edit.</li>
+              <li>
+                When two computers edit the same login, the newest edit wins and the other one stays in the entry's
+                history, marked as a conflict.
+              </li>
+              <li>
+                A delete reaches your other computers for 90 days. One that stays offline longer brings the deleted
+                entry back.
+              </li>
+            </ul>
+            <figure class="listing">
+              <pre class="term" tabindex="0" role="region" aria-label="Bucket listing"><code><span class="prompt">$</span> rclone ls nas:subclave/v1
+      298 keyfile
+      911 obj/f80aaa97db1874ee1f0e02d0fd72a744a18d151eb1acb041e2bc63f503e83baa
+     1204 obj/6cfe7cfe3c8fc80ef1257378f249477d729de9ad4f249cf126a3c17d47169217
+      877 obj/057719533092efa268dc8fa81203f889c505b3f9ed629227e7cc4efb824e89ec</code></pre>
+              <figcaption>
+                What a WebDAV share holds after a sync: one sealed object per record, named by a hash, and a
+                keyfile that opens only with your sync passphrase.
+              </figcaption>
+            </figure>
+            <dl class="specs">
+              <dt>Passphrase</dt>
+              <dd>Argon2id derives the key that wraps a random 32-byte root key</dd>
+              <dt>Records</dt>
+              <dd>AES-256-GCM, key derived with HKDF-SHA256</dd>
+              <dt>Object names</dt>
+              <dd>HMAC-SHA256 of each record's kind and id</dd>
+            </dl>
+          </div>
+        </section>
+
+        <section class="part" id="import" aria-labelledby="import-h">
+          <div class="part-head">
+            <h2 id="import-h">Import and backup</h2>
+            <p class="where">Written only where you choose.</p>
+          </div>
+          <div class="part-body">
+            <p class="claim">Bring your logins from KeePassXC, Bitwarden, Chrome or Firefox.</p>
+            <ul class="facts facts-wide">
+              <li>
+                Import their CSV exports. A preview flags rows already in the vault, and the rows you keep land in a new
+                group.
+              </li>
+              <li>The CSV holds every password in plain text, so the dialog offers to delete it once the import is done.</li>
+              <li>
+                Write a <code>.subclave-backup</code> sealed with a passphrase (Argon2id and AES-256-GCM). Subclave
+                refuses a weak one. Restoring a backup merges it into the vault and never deletes anything.
+              </li>
+              <li>Export a CSV in Bitwarden's columns, which imports back here and into Bitwarden.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="part" id="threats" aria-labelledby="threats-h">
+          <div class="part-head">
+            <h2 id="threats-h">Threat model</h2>
+          </div>
+          <div class="part-body">
+            <p class="claim">What Subclave protects against, and what it does not.</p>
+            <div class="cols">
+              <div>
+                <h3 class="list-h">Protects against</h3>
+                <ul class="facts">
+                  <li>
+                    Someone who copies the vault file, its <code>.bak</code> or a backup. They can only guess the
+                    password, and Argon2id makes every guess slow.
+                  </li>
+                  <li>Whoever runs your storage. They see ciphertext and hashed names, and cannot read or forge a record.</li>
+                  <li>A web page asking for a fill on its own, or for another site's login.</li>
+                  <li>Other users on the same computer. The socket sits in a private directory and the app checks who connects.</li>
+                  <li>Someone at your unlocked computer, for as long as the auto-lock and clipboard clearing allow.</li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="list-h list-h-not">Does not protect against</h3>
+                <ul class="facts facts-not">
+                  <li>
+                    Malware running as you. It can log the master password and read memory. No desktop password manager
+                    stops that.
+                  </li>
+                  <li>
+                    Hibernating while the vault is unlocked, which writes the key to disk with the rest of memory.
+                    Full-disk encryption covers this.
+                  </li>
+                  <li>An old backup or <code>.bak</code>, which still opens with the master password of its day.</li>
+                  <li>A CSV export, which anyone who gets the file can read.</li>
+                </ul>
+              </div>
+            </div>
+            <p class="more">
+              Details in <a href="https://github.com/rendyuwu/subclave/blob/main/SECURITY.md">the security policy</a>
+              and <a href="https://github.com/rendyuwu/subclave/blob/main/KNOWN-LIMITS.md">the known limits</a>.
+            </p>
+          </div>
+        </section>
+
+        <section class="part" id="download" aria-labelledby="download-h">
+          <div class="part-head">
+            <h2 id="download-h">Download</h2>
+          </div>
+          <div class="part-body">
+            <p class="claim"><span data-version>The latest release</span> for macOS, Linux and Windows.</p>
+            <p class="claim-note">Subclave checks for signed updates every 6 hours and installs only when you say so.</p>
+            <div class="platforms">
+              <article class="platform" data-os="mac">
+                <h3>macOS <span class="req">10.15+</span></h3>
+                <ul class="files">
+                  <li><a href="https://github.com/rendyuwu/subclave/releases/latest" data-file="mac-arm">Apple silicon <code>.dmg</code></a></li>
+                  <li><a href="https://github.com/rendyuwu/subclave/releases/latest" data-file="mac-intel">Intel <code>.dmg</code></a></li>
+                </ul>
+                <p class="note">Builds are not code-signed. Drag Subclave to Applications, then run once:</p>
+                <pre class="cmd"><code>xattr -cr /Applications/Subclave.app</code></pre>
+              </article>
+              <article class="platform" data-os="linux">
+                <h3>Linux</h3>
+                <ul class="files">
+                  <li><a href="https://github.com/rendyuwu/subclave/releases/latest" data-file="appimage"><code>.AppImage</code></a></li>
+                  <li><a href="https://github.com/rendyuwu/subclave/releases/latest" data-file="deb"><code>.deb</code></a></li>
+                  <li><a href="https://github.com/rendyuwu/subclave/releases/latest" data-file="rpm"><code>.rpm</code></a></li>
+                </ul>
+                <p class="note">The AppImage needs FUSE, or run it with <code>--appimage-extract-and-run</code>.</p>
+              </article>
+              <article class="platform" data-os="windows">
+                <h3>Windows</h3>
+                <ul class="files">
+                  <li><a href="https://github.com/rendyuwu/subclave/releases/latest" data-file="exe">Installer <code>-setup.exe</code></a></li>
+                </ul>
+                <p class="note">
+                  Per-user installer, not code-signed. SmartScreen warns when you run the installer: click More info,
+                  then Run anyway.
+                </p>
+              </article>
+            </div>
+
+            <div class="extension">
+              <div>
+                <h3>Browser extension</h3>
+                <ul class="files">
+                  <li><a href="https://github.com/rendyuwu/subclave/releases/latest" data-file="chrome">Chromium browsers <code>.zip</code></a></li>
+                  <li><a href="https://github.com/rendyuwu/subclave/releases/latest" data-file="firefox">Firefox <code>.zip</code></a></li>
+                </ul>
+                <p class="note">
+                  Not in the Chrome Web Store or signed by Mozilla yet, so you load it by hand and it does not update
+                  itself.
+                </p>
+              </div>
+              <ol class="steps">
+                <li>In Subclave, open Settings, Browser and turn on Chromium browsers or Firefox.</li>
+                <li>
+                  Chromium: unzip into a folder you keep, open <code>chrome://extensions</code>, turn on Developer mode
+                  and click Load unpacked. Firefox: open <code>about:debugging#/runtime/this-firefox</code> and click Load Temporary
+                  Add-on, which lasts until Firefox restarts.
+                </li>
+                <li>With Subclave unlocked, click Pair with Subclave in the extension, then Allow once the codes match.</li>
+              </ol>
+            </div>
+            <p class="more">
+              Firefox ESR, Developer Edition and Nightly can keep it installed:
+              <a href="https://github.com/rendyuwu/subclave#install-the-browser-extension">full install steps</a>.
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="foot wrap">
+      <p>
+        Subclave is Apache-2.0, derived from <a href="https://github.com/rendyuwu/tervia">Tervia</a>, which comes from
+        <a href="https://github.com/IlhamriSKY/TEDI">TEDI</a> by IlhamriSKY and
+        <a href="https://github.com/crynta/terax-ai">Terax</a> by Crynta.
+      </p>
+      <nav class="foot-links" aria-label="Project">
+        <a href="https://github.com/rendyuwu/subclave">Source</a>
+        <a href="https://github.com/rendyuwu/subclave/releases">Releases</a>
+        <a href="https://github.com/rendyuwu/subclave/blob/main/CHANGELOG.md">Changelog</a>
+        <a href="https://github.com/rendyuwu/subclave/blob/main/KNOWN-LIMITS.md">What does not work yet</a>
+        <a href="https://github.com/rendyuwu/subclave#build-from-source">Build from source</a>
+      </nav>
+    </footer>
+
+    <dialog class="viewer" aria-label="Screenshot">
+      <form method="dialog">
+        <button class="viewer-close">Close</button>
+      </form>
+    </dialog>
+  </body>
+</html>
